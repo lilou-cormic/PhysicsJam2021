@@ -116,21 +116,24 @@ public class Boss : MonoBehaviour
 
     private IEnumerator DoSpawnEnemy()
     {
-        _isAngry = true;
+        if (!_isHit)
+        {
+            _isAngry = true;
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
 
-        _isAngry = false;
-        _isAttacking = true;
+            _isAngry = false;
+            _isAttacking = true;
 
-        var enemyType = GameManager.CurrentLevel.EnemyTypes.GetRandom();
+            var enemyType = GameManager.CurrentLevel.EnemyTypes.GetRandom();
 
-        var enemy = EnemyPool.Current.GetItem(enemyType);
-        enemy.transform.position = SpawnPoint.position;
+            var enemy = EnemyPool.Current.GetItem(enemyType);
+            enemy.transform.position = SpawnPoint.position;
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
 
-        _isAttacking = false;
+            _isAttacking = false;
+        }
     }
 
     private void Health_HPChanged(int amount)
@@ -141,6 +144,8 @@ public class Boss : MonoBehaviour
 
     private void Health_HPDepleted(Health health)
     {
+        _isHit = true;
+
         GameManager.Win();
     }
 }

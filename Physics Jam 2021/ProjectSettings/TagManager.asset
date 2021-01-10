@@ -66,3 +66,6 @@ TagManager:
   - name: Projectiles
     uniqueID: 2628914705
     locked: 0
+  - name: HUD
+    uniqueID: 3902423653
+    locked: 0
