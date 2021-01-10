@@ -10,9 +10,20 @@ public class Boss : MonoBehaviour
 
     private Health Health = null;
 
+    [SerializeField] Transform SpawnPoint = null;
+
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
+    [SerializeField] Sprite NormalImage = null;
+    [SerializeField] Sprite AngryImage = null;
+    [SerializeField] Sprite AttackImage = null;
+    [SerializeField] Sprite HitImage = null;
+
     private bool _isProcessing = false;
+
+    private bool _isHit = false;
+    public bool _isAngry = false;
+    public bool _isAttacking = false;
 
     private int _direction = 1;
 
@@ -35,6 +46,18 @@ public class Boss : MonoBehaviour
         rb.velocity = Vector2.left * 3;
     }
 
+    private void Update()
+    {
+        if (_isHit)
+            SpriteRenderer.sprite = HitImage;
+        else if (_isAttacking)
+            SpriteRenderer.sprite = AttackImage;
+        else if (_isAngry)
+            SpriteRenderer.sprite = AngryImage;
+        else
+            SpriteRenderer.sprite = NormalImage;
+    }
+
     private void OnDestroy()
     {
         Health.HPChanged -= Health_HPChanged;
@@ -50,8 +73,11 @@ public class Boss : MonoBehaviour
 
         if (enemy != null && enemy.HasLeftBoss)
         {
-            if (collision.CompareTag(GameManager.SpikesTag))
-                Health.ChangeHP(-1);
+            if (!_isHit)
+            {
+                if (collision.CompareTag(GameManager.SpikesTag))
+                    Health.ChangeHP(-1);
+            }
 
             enemy.Damage();
         }
@@ -73,13 +99,11 @@ public class Boss : MonoBehaviour
 
     private IEnumerator DoOnDamaged()
     {
-        var color = SpriteRenderer.color;
-
-        SpriteRenderer.color = Color.red;
+        _isHit = true;
 
         yield return new WaitForSeconds(0.5f);
 
-        SpriteRenderer.color = color;
+        _isHit = false;
     }
 
     private void SpawnEnemy()
@@ -87,10 +111,26 @@ public class Boss : MonoBehaviour
         if (!gameObject.activeSelf)
             return;
 
+        StartCoroutine(DoSpawnEnemy());
+    }
+
+    private IEnumerator DoSpawnEnemy()
+    {
+        _isAngry = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        _isAngry = false;
+        _isAttacking = true;
+
         var enemyType = GameManager.CurrentLevel.EnemyTypes.GetRandom();
 
         var enemy = EnemyPool.Current.GetItem(enemyType);
-        enemy.transform.position = transform.position;
+        enemy.transform.position = SpawnPoint.position;
+
+        yield return new WaitForSeconds(0.5f);
+
+        _isAttacking = false;
     }
 
     private void Health_HPChanged(int amount)

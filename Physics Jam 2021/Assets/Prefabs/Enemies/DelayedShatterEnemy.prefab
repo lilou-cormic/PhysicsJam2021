@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199ec6cec528a4142ac4ea95b4a260f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpriteRenderer: {fileID: 4509016962603063425}
   Direction: 1
 --- !u!114 &3523334416873749420
 MonoBehaviour:

@@ -1,4 +1,5 @@
 using PurpleCable;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -8,6 +9,8 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     protected Rigidbody2D rb { get; private set; }
 
     protected Health Health { get; private set; }
+
+    [SerializeField] SpriteRenderer SpriteRenderer = null;
 
     public abstract EnemyType EnemyType { get; }
 
@@ -35,6 +38,11 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         Health.HPDepleted -= Health_HPDepleted;
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DoAppear());
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isProcessing)
@@ -56,6 +64,18 @@ public abstract class Enemy : MonoBehaviour, IPoolable
             IsGrounded = false;
 
         _isProcessing = false;
+    }
+
+    private IEnumerator DoAppear()
+    {
+        for (float i = 0; i < 0.8f; i += 0.1f)
+        {
+            SpriteRenderer.gameObject.transform.localScale = new Vector3(i, i, i);
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        SpriteRenderer.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
     }
 
     public void SetGravity(float gravity)
