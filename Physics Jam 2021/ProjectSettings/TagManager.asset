@@ -3,22 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Spikes
+  - Wall
+  - Ceiling
+  - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bounds
+  - Enemy
+  - Boss
+  - Switchers
+  - EnemySpikes
+  - HealthPickup
+  - BossShield
+  - PlayerSlash
   - 
   - 
   - 
@@ -38,6 +42,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 307181427
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bounds
+    uniqueID: 1885199405
+    locked: 0
+  - name: Switchers
+    uniqueID: 4109229505
+    locked: 0
+  - name: Boss
+    uniqueID: 3128487425
+    locked: 0
+  - name: Enemies
+    uniqueID: 3046502817
+    locked: 0
+  - name: Player
+    uniqueID: 1931116683
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2628914705
     locked: 0

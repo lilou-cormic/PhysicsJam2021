@@ -100,6 +100,14 @@ namespace PurpleCable
                 HPDepleted?.Invoke(this);
         }
 
+        /// <summary>
+        /// Sets the HP to Max HP
+        /// </summary>
+        public void FillHP()
+        {
+            CurrentHP = MaxHP;
+        }
+
         #endregion
     }
 }

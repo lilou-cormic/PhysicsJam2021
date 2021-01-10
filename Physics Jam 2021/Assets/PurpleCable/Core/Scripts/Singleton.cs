@@ -20,7 +20,7 @@ namespace PurpleCable
 
         #region Unity callbacks
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             if (Instance != null)
             {
