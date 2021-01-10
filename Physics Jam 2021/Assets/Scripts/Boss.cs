@@ -22,17 +22,17 @@ public class Boss : MonoBehaviour
 
         Health = GetComponent<Health>();
 
-        Health.MaxHP = GameManager.CurrentLevel.BossHP;
-
         Health.HPChanged += Health_HPChanged;
         Health.HPDepleted += Health_HPDepleted;
     }
 
     private void Start()
     {
+        Health.MaxHP = GameManager.CurrentLevel.BossHP;
+
         InvokeRepeating(nameof(SpawnEnemy), 2, 5);
 
-        rb.velocity = Vector2.left * 2;
+        rb.velocity = Vector2.left * 3;
     }
 
     private void OnDestroy()
@@ -48,7 +48,7 @@ public class Boss : MonoBehaviour
 
         Enemy enemy = collision.GetComponentInParent<Enemy>();
 
-        if (enemy != null && enemy.HasTouchedGround)
+        if (enemy != null && enemy.HasLeftBoss)
         {
             if (collision.CompareTag(GameManager.SpikesTag))
                 Health.ChangeHP(-1);
@@ -73,11 +73,13 @@ public class Boss : MonoBehaviour
 
     private IEnumerator DoOnDamaged()
     {
+        var color = SpriteRenderer.color;
+
         SpriteRenderer.color = Color.red;
 
         yield return new WaitForSeconds(0.5f);
 
-        SpriteRenderer.color = Color.white;
+        SpriteRenderer.color = color;
     }
 
     private void SpawnEnemy()
@@ -91,9 +93,10 @@ public class Boss : MonoBehaviour
         enemy.transform.position = transform.position;
     }
 
-    private void Health_HPChanged(Health health)
+    private void Health_HPChanged(int amount)
     {
-        StartCoroutine(DoOnDamaged());
+        if (amount < 0)
+            StartCoroutine(DoOnDamaged());
     }
 
     private void Health_HPDepleted(Health health)

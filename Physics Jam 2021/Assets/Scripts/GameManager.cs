@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public static Enemy GetEnemyPrefab(EnemyType enemyType)
         => Current.EnemyPrefabs.FirstOrDefault(x => x.EnemyType == enemyType) ?? throw new NotImplementedException($"{enemyType} not found in GameManager.EnemyPrefabs");
 
-    private int _CurrentLevelNumber = 0;
+    private static int _CurrentLevelNumber = 0;
     public int CurrentLevelNumber
     {
         get => _CurrentLevelNumber;

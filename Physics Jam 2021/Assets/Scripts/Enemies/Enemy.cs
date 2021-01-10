@@ -5,17 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour, IPoolable
 {
-    private Rigidbody2D rb = null;
+    protected Rigidbody2D rb { get; private set; }
 
-    private Health Health = null;
+    protected Health Health { get; private set; }
 
     public abstract EnemyType EnemyType { get; }
 
     private bool _isDead = false;
 
-    public bool HasTouchedGround { get; set; } = false;
+    public bool HasLeftBoss { get; set; } = false;
+
+    public bool IsGrounded { get; private set; } = false;
 
     public int Direction = 1;
+
+    private bool _isProcessing = false;
 
     private void Awake()
     {
@@ -31,8 +35,6 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         Health.HPDepleted -= Health_HPDepleted;
     }
 
-    private bool _isProcessing = false;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isProcessing)
@@ -41,33 +43,29 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         if (collision.gameObject.CompareTag(GameManager.WallTag))
             FlipDirection();
 
-        if (rb.bodyType == RigidbodyType2D.Dynamic)
+        if (rb.gravityScale == 1 && collision.gameObject.CompareTag(GameManager.FloorTag)
+            || (rb.gravityScale == -1 && collision.gameObject.CompareTag(GameManager.CeilingTag)))
         {
-            if (rb.gravityScale == 1 && collision.gameObject.CompareTag(GameManager.FloorTag)
-                || (rb.gravityScale == -1 && collision.gameObject.CompareTag(GameManager.CeilingTag)))
-            {
-                HasTouchedGround = true;
-
-                rb.bodyType = RigidbodyType2D.Kinematic;
-            }
+            IsGrounded = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag(GameManager.FloorTag) || collision.gameObject.CompareTag(GameManager.CeilingTag))
+            IsGrounded = false;
+
         _isProcessing = false;
     }
 
     public void SetGravity(float gravity)
     {
-        rb.bodyType = RigidbodyType2D.Dynamic;
-
         rb.gravityScale = gravity;
     }
 
     public void SetOutOfBoss()
     {
-        HasTouchedGround = true;
+        HasLeftBoss = true;
     }
 
     private void FlipDirection()
@@ -103,9 +101,11 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     void IPoolable.SetAsInUse()
     {
-        HasTouchedGround = false;
-        rb.bodyType = RigidbodyType2D.Dynamic;
+        Direction = (Random.Range(0, 2) > 0 ? 1 : -1);
+        HasLeftBoss = false;
+        IsGrounded = false;
         rb.gravityScale = GameManager.Gravity;
+        transform.localScale = new Vector3(transform.localScale.x, GameManager.Gravity, transform.localScale.y);
         Health.FillHP();
         _isDead = false;
 

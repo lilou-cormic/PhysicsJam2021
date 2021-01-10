@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
+    [SerializeField] PlayerSlash Slash = null;
+
     public bool IsGrounded { get; private set; } = false;
 
     private bool _isProcessing = false;
@@ -32,15 +34,25 @@ public class Player : MonoBehaviour
         Health.HPDepleted -= Health_HPDepleted;
     }
 
+    private void Update()
+    {
+        if (!IsGrounded)
+            return;
+
+        MoveController.Move(transform, Input.GetAxisRaw("Horizontal"), 10);
+
+        if (Input.GetButtonDown("Fire1"))
+            StartCoroutine(DoSlash());
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isProcessing)
             return;
 
         if (rb.gravityScale == 1 && collision.gameObject.CompareTag(GameManager.FloorTag)
-                || (rb.gravityScale == -1 && collision.gameObject.CompareTag(GameManager.CeilingTag)))
+            || (rb.gravityScale == -1 && collision.gameObject.CompareTag(GameManager.CeilingTag)))
         {
-            _isProcessing = true;
             IsGrounded = true;
         }
 
@@ -62,21 +74,22 @@ public class Player : MonoBehaviour
         _isProcessing = false;
     }
 
-    private void Update()
-    {
-        if (!IsGrounded)
-            return;
-
-        //rb.velocity = Vector2.right * Input.GetAxisRaw("Horizontal") * 1000 * Time.deltaTime;
-        //rb.AddForce(Vector2.right * Input.GetAxisRaw("Horizontal") * Time.deltaTime, ForceMode2D.Impulse);
-        transform.Translate(Input.GetAxisRaw("Horizontal") * 10 * Time.deltaTime, 0, 0, transform);
-    }
-
     public void SetGravity(float gravity)
     {
         IsGrounded = false;
 
         rb.gravityScale = gravity;
+
+        transform.localScale = new Vector3(transform.localScale.x, rb.gravityScale, transform.localScale.z);
+    }
+
+    private IEnumerator DoSlash()
+    {
+        Slash.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        Slash.gameObject.SetActive(false);
     }
 
     private IEnumerator DoOnDamaged()
@@ -90,9 +103,10 @@ public class Player : MonoBehaviour
         SpriteRenderer.color = color;
     }
 
-    private void Health_HPChanged(Health health)
+    private void Health_HPChanged(int amount)
     {
-        StartCoroutine(DoOnDamaged());
+        if (amount < 0)
+            StartCoroutine(DoOnDamaged());
     }
 
     private void Health_HPDepleted(Health health)

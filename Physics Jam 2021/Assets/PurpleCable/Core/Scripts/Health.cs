@@ -51,7 +51,7 @@ namespace PurpleCable
         /// <summary>
         /// Triggered when CurrentHP value changed
         /// </summary>
-        public event Action<Health> HPChanged;
+        public event Action<int> HPChanged;
 
         /// <summary>
         /// Triggered when CurrentHP value is 0 (depleted)
@@ -93,7 +93,7 @@ namespace PurpleCable
             CurrentHP = Mathf.Clamp(CurrentHP + amount, 0, MaxHP);
 
             // Trigger HPChanged
-            HPChanged?.Invoke(this);
+            HPChanged?.Invoke(amount);
 
             // If current HP is 0, trigger HPDepleted
             if (CurrentHP == 0)
