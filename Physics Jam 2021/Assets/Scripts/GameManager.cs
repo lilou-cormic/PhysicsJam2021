@@ -1,5 +1,4 @@
-﻿using PurpleCable;
-using System;
+﻿using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,9 +15,13 @@ public class GameManager : MonoBehaviour
 
     public static Levels Levels { get; private set; }
 
-    [SerializeField] Player Player = null;
+    [SerializeField] Player _Player = null;
+    public static Player Player => Current._Player;
 
     [SerializeField] Enemy[] EnemyPrefabs = null;
+
+    [SerializeField] HealthPickup _HealthPickupPrefab = null;
+    public static HealthPickup HealthPickupPrefab => Current._HealthPickupPrefab;
 
     private static GameManager Current { get; set; }
 
@@ -63,9 +66,11 @@ public class GameManager : MonoBehaviour
     {
         Current._Gravity = gravity;
 
-        EnemyPool.SetGravity(Gravity);
+        EnemyPool.SetGravity(gravity);
 
-        Current.Player.SetGravity(Gravity);
+        HealthPickupPool.SetGravity(gravity);
+
+        Player.SetGravity(gravity);
     }
 
     public static void Win()

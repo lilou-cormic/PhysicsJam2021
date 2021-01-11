@@ -22,7 +22,7 @@ namespace PurpleCable
         /// <summary>
         /// Indicates if the item has already been taken [To manage multi-frames / simultanious collisions]
         /// </summary>
-        private bool _isTaken = false;
+        protected bool IsTaken { get; set; } = false;
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace PurpleCable
         private void OnTriggerEnter2D(Collider2D collision)
         {
             // Do nothing if already taken [To manage multi-frames / simultanious collisions]
-            if (_isTaken)
+            if (IsTaken)
                 return;
 
             // Do nothing if it's determined that it can't be picked up
@@ -39,16 +39,16 @@ namespace PurpleCable
                 return;
 
             // Flag as taken
-            _isTaken = true;
+            IsTaken = true;
 
             // Play pick up sound
             PickupSound.Play();
 
-            // Do logic for when pick up (like add to inventory, heal, etc.)
+            // Do logic for when pick up (add to inventory, heal, etc.)
             OnPickup(collision);
 
-            // Destroy instance
-            Destroy(gameObject);
+            // Dispose of the item (destroy, add to pool, etc.)
+            Dispose();
         }
 
         #endregion
@@ -70,6 +70,15 @@ namespace PurpleCable
         /// </summary>
         /// <param name="collision">What collided with the item</param>
         protected abstract void OnPickup(Collider2D collision);
+
+        /// <summary>
+        /// Action to perform to dispose of the object after it's been used
+        /// </summary>
+        protected virtual void Dispose()
+        {
+            // Destroy instance
+            Destroy(gameObject);
+        }
 
         #endregion
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PurpleCable
 {
-    public abstract class Pool<TPoolable> : MonoBehaviour
+    public abstract class Pool<TPoolable> : MonoBehaviour, IEnumerable<TPoolable>
         where TPoolable : IPoolable
     {
         private List<TPoolable> _list;
@@ -38,13 +38,23 @@ namespace PurpleCable
 
             return item;
         }
+
+        IEnumerator<TPoolable> IEnumerable<TPoolable>.GetEnumerator()
+        {
+            return _list.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _list.GetEnumerator();
+        }
     }
 
     public abstract class Pool<TPoolable, TCategory> : MonoBehaviour, IEnumerable<TPoolable>
         where TPoolable : IPoolable
     {
         private Dictionary<TCategory, List<TPoolable>> _lists;
-        
+
         [SerializeField]
         protected int BatchCount = 10;
 
@@ -80,7 +90,7 @@ namespace PurpleCable
 
         IEnumerator<TPoolable> IEnumerable<TPoolable>.GetEnumerator()
         {
-           return _lists.SelectMany(x => x.Value).GetEnumerator();
+            return _lists.SelectMany(x => x.Value).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

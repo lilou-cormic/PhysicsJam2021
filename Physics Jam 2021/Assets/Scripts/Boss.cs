@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
     {
         Health.MaxHP = GameManager.CurrentLevel.BossHP;
 
-        InvokeRepeating(nameof(SpawnEnemy), 2, 5);
+        InvokeRepeating(nameof(SpawnEnemy), 2, 4);
 
         rb.velocity = Vector2.left * 3;
     }
@@ -56,6 +56,8 @@ public class Boss : MonoBehaviour
             SpriteRenderer.sprite = AngryImage;
         else
             SpriteRenderer.sprite = NormalImage;
+
+        SpriteRenderer.gameObject.transform.localPosition = new Vector3(0, Mathf.Sin(Time.timeSinceLevelLoad) * 0.2f, 0);
     }
 
     private void OnDestroy()
@@ -73,13 +75,18 @@ public class Boss : MonoBehaviour
 
         if (enemy != null && enemy.HasLeftBoss)
         {
+            bool canSpawnHealth = true;
+
             if (!_isHit)
             {
                 if (collision.CompareTag(GameManager.SpikesTag))
+                {
                     Health.ChangeHP(-1);
+                    canSpawnHealth = false;
+                }
             }
 
-            enemy.Damage();
+            enemy.Kill(canSpawnHealth);
         }
 
         if (collision.CompareTag(GameManager.WallTag))

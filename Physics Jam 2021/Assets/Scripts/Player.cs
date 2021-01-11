@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public bool IsGrounded { get; private set; } = false;
 
+    public bool HasFullHealth => Health.CurrentHP == Health.MaxHP;
+
     private bool _isProcessing = false;
 
     private void Awake()
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
         {
             Health.ChangeHP(-1);
 
-            enemy.Damage();
+            enemy.Kill(false);
         }
     }
 
@@ -79,6 +81,22 @@ public class Player : MonoBehaviour
         IsGrounded = false;
 
         rb.gravityScale = gravity;
+
+        StartCoroutine(DoSetGravity());
+    }
+
+    private IEnumerator DoSetGravity()
+    {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        yield return new WaitForSeconds(0.1f);
+
+        for (float i = -1; i < 1; i += 0.1f)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, i * rb.gravityScale, transform.localScale.z);
+
+            yield return new WaitForSeconds(0.01f);
+        }
 
         transform.localScale = new Vector3(transform.localScale.x, rb.gravityScale, transform.localScale.z);
     }

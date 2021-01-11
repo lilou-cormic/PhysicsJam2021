@@ -68,14 +68,14 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     private IEnumerator DoAppear()
     {
-        for (float i = 0; i < 0.8f; i += 0.1f)
+        for (float i = 0; i < 1f; i += 0.1f)
         {
-            SpriteRenderer.gameObject.transform.localScale = new Vector3(i, i, i);
+            SpriteRenderer.gameObject.transform.localScale = new Vector3(i * 0.8f, i * 0.8f, i * 0.8f); // = new Vector3(i, i, i);
 
             yield return new WaitForSeconds(0.05f);
         }
 
-        SpriteRenderer.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        SpriteRenderer.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f); //= Vector3.one;
     }
 
     public void SetGravity(float gravity)
@@ -98,12 +98,21 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         Direction *= -1;
     }
 
-    public void Damage()
+    public void Kill(bool canSpawnHealth)
     {
         if (_isDead)
             return;
 
         Health.ChangeHP(-1);
+
+        if (canSpawnHealth && !GameManager.Player.HasFullHealth)
+        {
+            if (Random.Range(0, 100) <= 25)
+            {
+                var healthPickup = HealthPickupPool.Current.GetItem();
+                healthPickup.transform.position = transform.position;
+            }
+        }
     }
 
     private void Health_HPDepleted(Health health)
@@ -125,7 +134,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         HasLeftBoss = false;
         IsGrounded = false;
         rb.gravityScale = GameManager.Gravity;
-        transform.localScale = new Vector3(transform.localScale.x, GameManager.Gravity, transform.localScale.y);
+        transform.localScale = new Vector3(1, GameManager.Gravity, 1);
         Health.FillHP();
         _isDead = false;
 
