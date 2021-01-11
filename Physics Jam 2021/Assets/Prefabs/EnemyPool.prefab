@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89527b4720908b444ab3638884464e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BatchCount: 10
+  BatchCount: 5
