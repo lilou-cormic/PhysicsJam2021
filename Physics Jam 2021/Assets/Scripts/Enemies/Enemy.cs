@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     protected Health Health { get; private set; }
 
-    [SerializeField] SpriteRenderer SpriteRenderer = null;
+    [SerializeField] protected SpriteRenderer SpriteRenderer = null;
 
     public abstract EnemyType EnemyType { get; }
 
@@ -70,12 +70,12 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     {
         for (float i = 0; i < 1f; i += 0.1f)
         {
-            SpriteRenderer.gameObject.transform.localScale = new Vector3(i * 0.8f, i * 0.8f, i * 0.8f); // = new Vector3(i, i, i);
+            SpriteRenderer.gameObject.transform.localScale = new Vector3(i, i, i);
 
             yield return new WaitForSeconds(0.05f);
         }
 
-        SpriteRenderer.gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f); //= Vector3.one;
+        SpriteRenderer.gameObject.transform.localScale = Vector3.one;
     }
 
     public void SetGravity(float gravity)

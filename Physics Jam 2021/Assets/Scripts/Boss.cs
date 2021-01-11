@@ -22,8 +22,8 @@ public class Boss : MonoBehaviour
     private bool _isProcessing = false;
 
     private bool _isHit = false;
-    public bool _isAngry = false;
-    public bool _isAttacking = false;
+    private bool _isAngry = false;
+    private bool _isAttacking = false;
 
     private int _direction = 1;
 
@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
     {
         Health.MaxHP = GameManager.CurrentLevel.BossHP;
 
-        InvokeRepeating(nameof(SpawnEnemy), 2, 4);
+        InvokeRepeating(nameof(SpawnEnemy), 2, 2);
 
         rb.velocity = Vector2.left * 3;
     }
