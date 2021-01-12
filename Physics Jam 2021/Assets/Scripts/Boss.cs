@@ -21,11 +21,11 @@ public class Boss : MonoBehaviour
 
     private bool _isProcessing = false;
 
-    private bool _isHit = false;
+    private int _hitCounter = 0;
+    private bool IsHit => _hitCounter > 0;
     private bool _isAngry = false;
     private bool _isAttacking = false;
-
-    private int _direction = 1;
+    private bool _isDead = false;
 
     private void Awake()
     {
@@ -41,14 +41,17 @@ public class Boss : MonoBehaviour
     {
         Health.MaxHP = GameManager.CurrentLevel.BossHP;
 
-        InvokeRepeating(nameof(SpawnEnemy), 2, 2);
+        InvokeRepeating(nameof(Attack), 2, 2);
 
-        rb.velocity = Vector2.left * 3;
+        rb.velocity = Vector2.left * 3 * (Random.Range(0, 2) > 0 ? 1 : -1);
     }
 
     private void Update()
     {
-        if (_isHit)
+        if (_isDead)
+            return;
+
+        if (IsHit)
             SpriteRenderer.sprite = HitImage;
         else if (_isAttacking)
             SpriteRenderer.sprite = AttackImage;
@@ -68,26 +71,21 @@ public class Boss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_isProcessing)
+        if (_isDead)
             return;
 
         Enemy enemy = collision.GetComponentInParent<Enemy>();
 
         if (enemy != null && enemy.HasLeftBoss)
         {
-            bool canSpawnHealth = true;
+            if (collision.CompareTag(GameManager.SpikesTag))
+                Health.ChangeHP(-1);
 
-            if (!_isHit)
-            {
-                if (collision.CompareTag(GameManager.SpikesTag))
-                {
-                    Health.ChangeHP(-1);
-                    canSpawnHealth = false;
-                }
-            }
-
-            enemy.Kill(canSpawnHealth);
+            enemy.Kill();
         }
+
+        if (_isProcessing)
+            return;
 
         if (collision.CompareTag(GameManager.WallTag))
         {
@@ -106,24 +104,24 @@ public class Boss : MonoBehaviour
 
     private IEnumerator DoOnDamaged()
     {
-        _isHit = true;
+        _hitCounter++;
 
         yield return new WaitForSeconds(0.5f);
 
-        _isHit = false;
+        _hitCounter--;
     }
 
-    private void SpawnEnemy()
+    private void Attack()
     {
-        if (!gameObject.activeSelf)
+        if (_isDead || !gameObject.activeSelf)
             return;
 
-        StartCoroutine(DoSpawnEnemy());
+        StartCoroutine(DoAttack());
     }
 
-    private IEnumerator DoSpawnEnemy()
+    private IEnumerator DoAttack()
     {
-        if (!_isHit)
+        if (!IsHit)
         {
             _isAngry = true;
 
@@ -132,10 +130,17 @@ public class Boss : MonoBehaviour
             _isAngry = false;
             _isAttacking = true;
 
-            var enemyType = GameManager.CurrentLevel.EnemyTypes.GetRandom();
+            if (GameManager.CurrentLevel.GravityWave && Random.Range(0, 100) < 10)
+            {
+                GameManager.SetGravity(GameManager.Gravity * -1);
+            }
+            else
+            {
+                var enemyType = GameManager.CurrentLevel.EnemyTypes.GetRandom();
 
-            var enemy = EnemyPool.Current.GetItem(enemyType);
-            enemy.transform.position = SpawnPoint.position;
+                var enemy = EnemyPool.Current.GetItem(enemyType);
+                enemy.transform.position = SpawnPoint.position;
+            }
 
             yield return new WaitForSeconds(0.5f);
 
@@ -151,7 +156,9 @@ public class Boss : MonoBehaviour
 
     private void Health_HPDepleted(Health health)
     {
-        _isHit = true;
+        _isDead = true;
+
+        SpriteRenderer.sprite = HitImage;
 
         GameManager.Win();
     }

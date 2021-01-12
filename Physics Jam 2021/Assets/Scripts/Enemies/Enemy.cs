@@ -20,7 +20,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     public bool IsGrounded { get; private set; } = false;
 
-    public int Direction = 1;
+    protected int Direction = 1;
 
     private bool _isProcessing = false;
 
@@ -98,21 +98,12 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         Direction *= -1;
     }
 
-    public void Kill(bool canSpawnHealth)
+    public void Kill()
     {
         if (_isDead)
             return;
 
         Health.ChangeHP(-1);
-
-        if (canSpawnHealth && !GameManager.Player.HasFullHealth)
-        {
-            if (Random.Range(0, 100) <= 25)
-            {
-                var healthPickup = HealthPickupPool.Current.GetItem();
-                healthPickup.transform.position = transform.position;
-            }
-        }
     }
 
     private void Health_HPDepleted(Health health)
@@ -134,7 +125,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         HasLeftBoss = false;
         IsGrounded = false;
         rb.gravityScale = GameManager.Gravity;
-        transform.localScale = new Vector3(1, GameManager.Gravity, 1);
+        transform.localScale = new Vector3(Direction, GameManager.Gravity, 1);
         Health.FillHP();
         _isDead = false;
 

@@ -48,9 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bounds
-    uniqueID: 1885199405
-    locked: 0
   - name: Switchers
     uniqueID: 4109229505
     locked: 0
@@ -68,6 +65,9 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 2628914705
+    locked: 0
+  - name: Bounds
+    uniqueID: 1885199405
     locked: 0
   - name: HUD
     uniqueID: 3902423653

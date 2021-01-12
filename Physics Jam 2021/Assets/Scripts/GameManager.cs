@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
         Current = null;
     }
 
-    public static void SetGravity(int gravity)
+    public static void SetGravity(float gravity)
     {
         Current._Gravity = gravity;
 
@@ -74,11 +75,13 @@ public class GameManager : MonoBehaviour
     }
 
     public static void Win()
-        => Current.WinInternal();
+        => Current.StartCoroutine(Current.DoWin());
 
-    private void WinInternal()
+    private IEnumerator DoWin()
     {
         CurrentLevelNumber++;
+
+        yield return new WaitForSeconds(2f);
 
         if (CurrentLevel != null)
             SceneManager.LoadScene("Main");
@@ -87,11 +90,13 @@ public class GameManager : MonoBehaviour
     }
 
     public static void GameOver()
-        => Current.GameOverInternal();
+        => Current.StartCoroutine(Current.DoGameOver());
 
-    public void GameOverInternal()
+    public IEnumerator DoGameOver()
     {
         _CurrentLevelNumber = 1;
+
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene("GameOver");
     }

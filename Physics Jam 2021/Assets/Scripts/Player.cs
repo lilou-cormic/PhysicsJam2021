@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private bool _isHit = false;
     private bool _isAttacking = false;
 
+    private bool _isDead = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +49,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (_isDead)
+            return;
+
         if (_isHit)
             SpriteRenderer.sprite = HitImage;
         else if (_isAttacking)
@@ -88,7 +93,7 @@ public class Player : MonoBehaviour
         {
             Health.ChangeHP(-1);
 
-            enemy.Kill(false);
+            enemy.Kill();
         }
     }
 
@@ -153,6 +158,13 @@ public class Player : MonoBehaviour
 
     private void Health_HPDepleted(Health health)
     {
+        if (_isDead)
+            return;
+
+        _isDead = true;
+
+        SpriteRenderer.sprite = HitImage;
+
         GameManager.GameOver();
     }
 }
