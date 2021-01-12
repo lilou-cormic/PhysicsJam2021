@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1005903613360976857}
   - component: {fileID: 1938563676359281287}
-  - component: {fileID: 2813368529962753926}
   - component: {fileID: 3226256020559511806}
   - component: {fileID: 313693064928070744}
   m_Layer: 7
@@ -49,20 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 7209542446726369235}
-  Direction: 1
---- !u!114 &2813368529962753926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8153035117456493675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94feea240bbea784a9e4be28d7aecd80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _MaxHP: 1
+  PopColor: {r: 0.86666673, g: 0.054901965, b: 0.08235294, a: 1}
+  ProjectilePrefab: {fileID: 3751981095685106063, guid: 8f9599ce1c9bbd4408bbfb2d19331533, type: 3}
 --- !u!61 &3226256020559511806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,7 +166,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1248464479
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6022e660279b7e944a8507a8f534d070, type: 3}
   m_Color: {r: 0.8679245, g: 0.05322181, b: 0.08270476, a: 1}
@@ -205,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 6022e660279b7e944a8507a8f534d070, type: 3}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingOrder

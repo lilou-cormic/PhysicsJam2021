@@ -69,6 +69,9 @@ TagManager:
   - name: Bounds
     uniqueID: 1885199405
     locked: 0
+  - name: Pop
+    uniqueID: 1282796131
+    locked: 0
   - name: HUD
     uniqueID: 3902423653
     locked: 0

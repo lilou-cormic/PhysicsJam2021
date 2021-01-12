@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,15 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player _Player = null;
     public static Player Player => Current._Player;
 
-    [SerializeField] Enemy[] EnemyPrefabs = null;
-
-    [SerializeField] HealthPickup _HealthPickupPrefab = null;
-    public static HealthPickup HealthPickupPrefab => Current._HealthPickupPrefab;
-
     private static GameManager Current { get; set; }
-
-    public static Enemy GetEnemyPrefab(EnemyType enemyType)
-        => Current.EnemyPrefabs.FirstOrDefault(x => x.EnemyType == enemyType) ?? throw new NotImplementedException($"{enemyType} not found in GameManager.EnemyPrefabs");
 
     private static int _CurrentLevelNumber = 0;
     public int CurrentLevelNumber
@@ -47,6 +37,8 @@ public class GameManager : MonoBehaviour
     private float _Gravity = 1;
     public static float Gravity => Current._Gravity;
 
+    private bool _gameIsEnding = false;
+
     private void Awake()
     {
         Current = this;
@@ -54,7 +46,7 @@ public class GameManager : MonoBehaviour
         if (Levels == null)
             Levels = new Levels();
 
-        if (CurrentLevelNumber <= 0)
+        if (CurrentLevel == null)
             CurrentLevelNumber = 1;
     }
 
@@ -79,14 +71,19 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DoWin()
     {
-        CurrentLevelNumber++;
+        if (!_gameIsEnding)
+        {
+            _gameIsEnding = true;
 
-        yield return new WaitForSeconds(2f);
+            CurrentLevelNumber++;
 
-        if (CurrentLevel != null)
-            SceneManager.LoadScene("Main");
-        else
-            SceneManager.LoadScene("Win");
+            yield return new WaitForSeconds(2f);
+
+            if (CurrentLevel != null)
+                SceneManager.LoadScene("Win");
+            else
+                SceneManager.LoadScene("Congratulations");
+        }
     }
 
     public static void GameOver()
@@ -94,10 +91,15 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator DoGameOver()
     {
-        _CurrentLevelNumber = 1;
+        if (!_gameIsEnding)
+        {
+            _gameIsEnding = true;
 
-        yield return new WaitForSeconds(2f);
+            CurrentLevelNumber = 1;
 
-        SceneManager.LoadScene("GameOver");
+            yield return new WaitForSeconds(2f);
+
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

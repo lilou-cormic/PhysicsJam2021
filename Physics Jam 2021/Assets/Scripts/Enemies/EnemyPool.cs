@@ -1,10 +1,14 @@
 ﻿using PurpleCable;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public sealed class EnemyPool : Pool<Enemy, EnemyType>
 {
     public static EnemyPool Current { get; private set; } = null;
+
+    [SerializeField] Enemy[] Prefabs = null;
 
     protected override void Awake()
     {
@@ -27,12 +31,13 @@ public sealed class EnemyPool : Pool<Enemy, EnemyType>
 
     protected override Enemy CreateItem(EnemyType category)
     {
-        Enemy enemy = Instantiate(GameManager.GetEnemyPrefab(category), transform);
+        var prefab = Prefabs.FirstOrDefault(x => x.EnemyType == category) ?? throw new NotImplementedException($"{category} not found in EnemyPool.Prefabs");
+
+        Enemy enemy = Instantiate(prefab, transform);
         ((IPoolable)enemy).SetAsAvailable();
 
         return enemy;
     }
-
     public static void SetGravity(float gravity)
     {
         foreach (var enemy in Current)

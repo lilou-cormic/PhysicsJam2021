@@ -2,15 +2,14 @@ using PurpleCable;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour, IPoolable
 {
     protected Rigidbody2D rb { get; private set; }
 
-    protected Health Health { get; private set; }
-
     [SerializeField] protected SpriteRenderer SpriteRenderer = null;
+
+    [SerializeField] Color PopColor = Color.white;
 
     public abstract EnemyType EnemyType { get; }
 
@@ -18,7 +17,22 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     public bool HasLeftBoss { get; set; } = false;
 
-    public bool IsGrounded { get; private set; } = false;
+    private bool _IsGrounded = false;
+    public bool IsGrounded
+    {
+        get => _IsGrounded;
+
+        set
+        {
+            if (_IsGrounded != value)
+            {
+                _IsGrounded = value;
+
+                if (_IsGrounded)
+                    OnTouchedGround();
+            }
+        }
+    }
 
     protected int Direction = 1;
 
@@ -27,15 +41,6 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        Health = GetComponent<Health>();
-
-        Health.HPDepleted += Health_HPDepleted;
-    }
-
-    private void OnDestroy()
-    {
-        Health.HPDepleted -= Health_HPDepleted;
     }
 
     private void OnEnable()
@@ -78,6 +83,9 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         SpriteRenderer.gameObject.transform.localScale = Vector3.one;
     }
 
+    protected virtual void OnTouchedGround()
+    { }
+
     public void SetGravity(float gravity)
     {
         rb.gravityScale = gravity;
@@ -100,18 +108,9 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     public void Kill()
     {
-        if (_isDead)
-            return;
-
-        Health.ChangeHP(-1);
-    }
-
-    private void Health_HPDepleted(Health health)
-    {
-        if (_isDead)
-            return;
-
         _isDead = true;
+
+        PopPool.ShowPop(PopColor, transform.position);
 
         ((IPoolable)(this)).SetAsAvailable();
     }
@@ -126,7 +125,6 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         IsGrounded = false;
         rb.gravityScale = GameManager.Gravity;
         transform.localScale = new Vector3(Direction, GameManager.Gravity, 1);
-        Health.FillHP();
         _isDead = false;
 
         gameObject.SetActive(true);

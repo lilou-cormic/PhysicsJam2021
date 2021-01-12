@@ -9,6 +9,8 @@ public class HealthPickup : PoolableItem
 
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
+    [SerializeField] Color PopColor = Color.white;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +35,8 @@ public class HealthPickup : PoolableItem
     protected override void OnPickup(Collider2D collision)
     {
         collision.GetComponent<Health>().ChangeHP(1);
+
+        PopPool.ShowPop(PopColor, transform.position);
     }
 
     public void SetGravity(float gravity)

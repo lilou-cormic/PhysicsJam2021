@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BatchCount: 5
+  Prefabs:
+  - {fileID: 1759870254687116141, guid: e354eab7b8da6f04cb4201b8581b0a22, type: 3}
+  - {fileID: 1142842372884980758, guid: 0d33c9e903793b848b3ca0137b1ef32c, type: 3}
+  - {fileID: 1938563676359281287, guid: cd64f1bc7f58cde40a683c751c468f56, type: 3}
+  - {fileID: 256710030761654380, guid: ffe72db9571f74f45beffe5546d9a545, type: 3}

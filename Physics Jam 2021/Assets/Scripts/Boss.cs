@@ -156,7 +156,12 @@ public class Boss : MonoBehaviour
 
     private void Health_HPDepleted(Health health)
     {
+        if (_isDead)
+            return;
+
         _isDead = true;
+
+        rb.velocity = Vector2.zero;
 
         SpriteRenderer.sprite = HitImage;
 

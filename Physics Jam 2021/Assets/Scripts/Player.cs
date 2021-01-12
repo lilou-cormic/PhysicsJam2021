@@ -163,6 +163,8 @@ public class Player : MonoBehaviour
 
         _isDead = true;
 
+        Animator.SetFloat("speed", 0);
+
         SpriteRenderer.sprite = HitImage;
 
         GameManager.GameOver();

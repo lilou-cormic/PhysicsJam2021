@@ -22,7 +22,21 @@ namespace PurpleCable
         /// <summary>
         /// Max HP
         /// </summary>
-        public int MaxHP { get => _MaxHP; set { _MaxHP = value; CurrentHP = _MaxHP; } }
+        public int MaxHP
+        {
+            get => _MaxHP;
+
+            set
+            {
+                _MaxHP = value;
+
+                var change = _MaxHP - CurrentHP;
+
+                CurrentHP = _MaxHP;
+
+                HPChanged?.Invoke(change);
+            }
+        }
 
         /// <summary>
         /// Current HP [0 - MaxHP]

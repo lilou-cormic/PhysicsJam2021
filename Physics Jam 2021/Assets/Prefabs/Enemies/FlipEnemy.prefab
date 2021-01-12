@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1248464479
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 390575186043271062}
   - component: {fileID: 1142842372884980758}
-  - component: {fileID: 2301538667850464534}
   - component: {fileID: 7414536851482065469}
   - component: {fileID: 2572718212270404452}
   m_Layer: 7
@@ -132,22 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 6276654874781679282}
-  Direction: 1
+  PopColor: {r: 0.48235297, g: 0.7725491, b: 0.38823533, a: 1}
   NormalImage: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
   FrownImage: {fileID: 21300000, guid: 1b605a90af1480942bc8645f035d45d1, type: 3}
---- !u!114 &2301538667850464534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3853266574028442539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94feea240bbea784a9e4be28d7aecd80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _MaxHP: 1
 --- !u!61 &7414536851482065469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -250,7 +236,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.36}
+  m_Size: {x: 1.6, y: 0.36}
   m_EdgeRadius: 0
 --- !u!1001 &4464763623143149962
 PrefabInstance:
@@ -277,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingOrder

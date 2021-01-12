@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1653293627
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9dc8421bdc99b224fbd744b021394328, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickupSound: {fileID: 0}
   SpriteRenderer: {fileID: 7924906560821209154}
+  PopColor: {r: 0.9843138, g: 0.043137256, b: 0.04705883, a: 1}
 --- !u!50 &8767978273718075252
 Rigidbody2D:
   serializedVersion: 4
@@ -216,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 9dc8421bdc99b224fbd744b021394328, type: 3}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingLayer
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingOrder
