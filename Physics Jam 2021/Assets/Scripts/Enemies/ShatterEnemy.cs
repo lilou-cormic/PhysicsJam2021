@@ -13,7 +13,7 @@ public class ShatterEnemy : Enemy
 
     protected void Explode()
     {
-        if (!gameObject.activeSelf)
+        if (IsDead)
             return;
 
         var projectilePrefab = Instantiate(ProjectilePrefab, transform.parent);

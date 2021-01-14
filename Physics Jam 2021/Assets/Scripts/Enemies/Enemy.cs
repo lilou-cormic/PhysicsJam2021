@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     public abstract EnemyType EnemyType { get; }
 
     private bool _isDead = false;
+    protected bool IsDead => _isDead;
 
     public bool HasLeftBoss { get; set; } = false;
 

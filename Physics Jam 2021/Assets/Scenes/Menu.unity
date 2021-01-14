@@ -1047,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901855970248396496, guid: 8730914f11f3ee04b96f96df930974c6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 792.3725
+      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 2901855970248396496, guid: 8730914f11f3ee04b96f96df930974c6, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1507,7 +1507,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1194648851583326724, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: Label
-      value: Start
+      value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 4184024935688225819, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: m_text

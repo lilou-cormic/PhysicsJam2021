@@ -101,7 +101,7 @@ namespace PurpleCable
         }
 
         /// <summary>
-        /// Increments the multiplier [by 1]
+        /// Increments the multiplier [by 1] and triggers ScoreChanged
         /// </summary>
         public static void IncrementMultiplier()
         {

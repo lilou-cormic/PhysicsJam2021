@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using PurpleCable;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(CameraShaker))]
 public class GameManager : MonoBehaviour
 {
     public const string WallTag = "Wall";
@@ -17,18 +19,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player _Player = null;
     public static Player Player => Current._Player;
 
+    [SerializeField] MainMenu MainMenu = null;
+
+    private CameraShaker CameraShaker = null;
+
     private static GameManager Current { get; set; }
 
-    private static int _CurrentLevelNumber = 0;
-    public int CurrentLevelNumber
+    public static int CurrentLevelNumber { get; private set; } = 0;
+
+    public int LevelNumber
     {
-        get => _CurrentLevelNumber;
+        get => CurrentLevelNumber;
 
         set
         {
-            _CurrentLevelNumber = value;
+            CurrentLevelNumber = value;
 
-            CurrentLevel = Levels.Get(_CurrentLevelNumber);
+            CurrentLevel = Levels.Get(CurrentLevelNumber);
         }
     }
 
@@ -43,11 +50,15 @@ public class GameManager : MonoBehaviour
     {
         Current = this;
 
+        CameraShaker = GetComponent<CameraShaker>();
+
         if (Levels == null)
             Levels = new Levels();
 
         if (CurrentLevel == null)
-            CurrentLevelNumber = 1;
+            LevelNumber = 1;
+
+        ScoreManager.ResetScore();
     }
 
     private void OnDestroy()
@@ -66,6 +77,12 @@ public class GameManager : MonoBehaviour
         Player.SetGravity(gravity);
     }
 
+    public static void ShakeCamera()
+    {
+        if (!Settings.NoScreenShake)
+            Current.CameraShaker.Shake();
+    }
+
     public static void Win()
         => Current.StartCoroutine(Current.DoWin());
 
@@ -75,14 +92,17 @@ public class GameManager : MonoBehaviour
         {
             _gameIsEnding = true;
 
-            CurrentLevelNumber++;
+            ScoreManager.AddPoints(LevelNumber);
+            ScoreManager.SetHighScore();
+
+            LevelNumber++;
 
             yield return new WaitForSeconds(2f);
 
             if (CurrentLevel != null)
-                SceneManager.LoadScene("Win");
+                MainMenu.StartCoroutine(MainMenu.GoToScene("Win"));
             else
-                SceneManager.LoadScene("Congratulations");
+                MainMenu.StartCoroutine(MainMenu.GoToScene("Congratulations"));
         }
     }
 
@@ -95,11 +115,14 @@ public class GameManager : MonoBehaviour
         {
             _gameIsEnding = true;
 
-            CurrentLevelNumber = 1;
+            ScoreManager.AddPoints(LevelNumber - 1);
+            ScoreManager.SetHighScore();
+
+            LevelNumber = 1;
 
             yield return new WaitForSeconds(2f);
 
-            SceneManager.LoadScene("GameOver");
+            MainMenu.StartCoroutine(MainMenu.GoToScene("GameOver"));
         }
     }
 }

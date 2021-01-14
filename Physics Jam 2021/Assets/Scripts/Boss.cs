@@ -106,6 +106,8 @@ public class Boss : MonoBehaviour
     {
         _hitCounter++;
 
+        GameManager.ShakeCamera();
+
         yield return new WaitForSeconds(0.5f);
 
         _hitCounter--;

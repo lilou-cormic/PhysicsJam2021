@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 542262216086651563}
   - component: {fileID: 6852292974960036270}
+  - component: {fileID: 5688062561114032420}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,10 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdca446d7fa0224d9242028a25a006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  EnemyPrefabs:
-  - {fileID: 1759870254687116141, guid: e354eab7b8da6f04cb4201b8581b0a22, type: 3}
-  - {fileID: 1142842372884980758, guid: 0d33c9e903793b848b3ca0137b1ef32c, type: 3}
-  - {fileID: 1938563676359281287, guid: cd64f1bc7f58cde40a683c751c468f56, type: 3}
-  - {fileID: 256710030761654380, guid: ffe72db9571f74f45beffe5546d9a545, type: 3}
-  _HealthPickupPrefab: {fileID: 8167972710760877106, guid: 8bf66a1c8e0775545a0e5c515befa34b, type: 3}
+  _Player: {fileID: 0}
+--- !u!114 &5688062561114032420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7759449580062923115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab22408518306884bbeef325789fdce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 0.2
+  Amplitude: 1.2
+  Frequency: 2
+  VirtualCamera: {fileID: 0}

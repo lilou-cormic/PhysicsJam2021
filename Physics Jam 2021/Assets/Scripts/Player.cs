@@ -145,6 +145,8 @@ public class Player : MonoBehaviour
     {
         _isHit = true;
 
+        GameManager.ShakeCamera();
+
         yield return new WaitForSeconds(0.5f);
 
         _isHit = false;

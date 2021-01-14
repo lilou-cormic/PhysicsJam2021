@@ -7,7 +7,8 @@ public class DelayedShatterEnemy : ShatterEnemy
 
     protected override void OnTouchedGround()
     {
-        StartCoroutine(DoExplode());
+        if (!IsDead)
+            StartCoroutine(DoExplode());
     }
 
     private IEnumerator DoExplode()
