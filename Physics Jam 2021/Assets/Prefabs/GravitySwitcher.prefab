@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7219055594368340465}
   - component: {fileID: 7219055594368340467}
   - component: {fileID: 7219055594368340466}
+  - component: {fileID: 4047772755253970059}
   m_Layer: 9
   m_Name: GravitySwitcher
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7219055594368340478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -5.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7219055595525795069}
@@ -84,6 +85,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4047772755253970059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219055594368340478}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43d705b94c3ca904bbc72f9622d24b1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7219055595525795066
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +115,7 @@ GameObject:
   - component: {fileID: 7219055595525795069}
   - component: {fileID: 7219055595525795068}
   m_Layer: 0
-  m_Name: CirclePlaceHolder
+  m_Name: Gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,8 +129,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7219055595525795066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7219055594368340464}
   m_RootOrder: 0
@@ -153,10 +173,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -185737791
-  m_SortingLayer: 2
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6949b135560d5fd4fa88e087111cb635, type: 3}
-  m_Color: {r: 0.63292414, g: 0.56817377, b: 0.9056604, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 65fe551917a89124788bac7a31853a2a, type: 3}
+  m_Color: {r: 0.48235297, g: 0.7725491, b: 0.38823533, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

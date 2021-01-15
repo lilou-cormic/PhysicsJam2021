@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8222848028852029931}
   - component: {fileID: 6326183581581736881}
+  - component: {fileID: 7745390838417837252}
   m_Layer: 0
   m_Name: Gfx
   m_TagString: Untagged
@@ -82,6 +83,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7745390838417837252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661584880416938482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf29484fbaee961409f6349860503e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tick: 1
+  MinScale: {x: 1, y: 1, z: 1}
+  MaxScale: {x: 0.95, y: 1.05, z: 1}
+  IsOnlyOnMouseOver: 0
 --- !u!1 &2173913130341993327
 GameObject:
   m_ObjectHideFlags: 0

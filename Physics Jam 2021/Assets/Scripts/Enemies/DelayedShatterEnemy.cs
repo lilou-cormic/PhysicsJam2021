@@ -13,8 +13,19 @@ public class DelayedShatterEnemy : ShatterEnemy
 
     private IEnumerator DoExplode()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+
+        IsExploding = true;
+
+        yield return new WaitForSeconds(0.5f);
 
         Explode();
+    }
+
+    protected override void SetAsInUseInternal()
+    {
+        base.SetAsInUseInternal();
+
+        IsExploding = false;
     }
 }

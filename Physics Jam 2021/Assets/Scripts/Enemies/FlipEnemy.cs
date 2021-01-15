@@ -4,10 +4,9 @@ public class FlipEnemy : Enemy
 {
     public override EnemyType EnemyType => EnemyType.Flip;
 
-    [SerializeField] Sprite NormalImage = null;
-    [SerializeField] Sprite FrownImage = null;
+    protected override bool AffectedByGravitySwitch => true;
 
-    private void Update()
+    protected override void Update()
     {
         if (IsGrounded && rb.gravityScale != transform.localScale.y)
         {

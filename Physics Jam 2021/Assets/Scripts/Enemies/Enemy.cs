@@ -9,9 +9,14 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     [SerializeField] protected SpriteRenderer SpriteRenderer = null;
 
+    [SerializeField] protected Sprite NormalImage = null;
+    [SerializeField] protected Sprite FrownImage = null;
+
     [SerializeField] Color PopColor = Color.white;
 
     public abstract EnemyType EnemyType { get; }
+
+    protected abstract bool AffectedByGravitySwitch { get; }
 
     private bool _isDead = false;
     protected bool IsDead => _isDead;
@@ -47,6 +52,20 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     private void OnEnable()
     {
         StartCoroutine(DoAppear());
+    }
+
+    protected virtual void Update()
+    {
+        if (IsGrounded && rb.gravityScale == transform.localScale.y)
+        {
+            SpriteRenderer.sprite = NormalImage;
+            MoveController.Move(transform, Direction, 1);
+        }
+        else
+        {
+            SpriteRenderer.sprite = FrownImage;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -89,7 +108,8 @@ public abstract class Enemy : MonoBehaviour, IPoolable
 
     public void SetGravity(float gravity)
     {
-        rb.gravityScale = gravity;
+        if (!gameObject.activeSelf || AffectedByGravitySwitch)
+            rb.gravityScale = gravity;
     }
 
     public void SetOutOfBoss()
@@ -128,8 +148,13 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         transform.localScale = new Vector3(Direction, GameManager.Gravity, 1);
         _isDead = false;
 
+        SetAsInUseInternal();
+
         gameObject.SetActive(true);
     }
+
+    protected virtual void SetAsInUseInternal()
+    { }
 
     void IPoolable.SetAsAvailable()
        => gameObject.SetActive(false);

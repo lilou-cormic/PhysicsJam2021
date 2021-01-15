@@ -1475,7 +1475,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923964, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_text
-      value: Controls assets by Kenney (kenney.nl) CC0
+      value: 'Controls assets by Kenney (kenney.nl) CC0
+
+        Music derived from
+        Passacaglia by J. S. Bach, Arranged for string quartet by Carl M. Bolstad'
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923964, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_fontSize

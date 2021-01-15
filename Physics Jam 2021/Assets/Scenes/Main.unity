@@ -202,6 +202,10 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7219055594368340464, guid: 786163df467c1504cbc47619136b0ae8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219055594368340464, guid: 786163df467c1504cbc47619136b0ae8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
       objectReference: {fileID: 0}
@@ -386,6 +390,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7219055594368340464, guid: 786163df467c1504cbc47619136b0ae8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219055594368340464, guid: 786163df467c1504cbc47619136b0ae8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
       objectReference: {fileID: 0}
@@ -542,16 +550,20 @@ PrefabInstance:
       value: BossHealthUnit (9)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -884,16 +896,20 @@ PrefabInstance:
       value: BossHealthUnit (6)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -1085,16 +1101,20 @@ PrefabInstance:
       value: BossHealthUnit (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -1548,16 +1568,20 @@ PrefabInstance:
       value: BossHealthUnit (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2097,16 +2121,20 @@ PrefabInstance:
       value: BossHealthUnit (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2211,16 +2239,20 @@ PrefabInstance:
       value: BossHealthUnit
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2393,16 +2425,20 @@ PrefabInstance:
       value: BossHealthUnit (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2512,16 +2548,20 @@ PrefabInstance:
       value: BossHealthUnit (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2648,16 +2688,20 @@ PrefabInstance:
       value: BossHealthUnit (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
@@ -2762,16 +2806,20 @@ PrefabInstance:
       value: BossHealthUnit (8)
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71951eecc393d394bb0cfefc16292aaa, type: 3}
+    - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.83921576
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 8613703627518269016, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8352942
+      value: 0.972549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}

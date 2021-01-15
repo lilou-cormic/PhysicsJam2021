@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -272,7 +272,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.9882353, b: 0.2509804, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -674,6 +674,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.9882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7432818830197592438, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -746,7 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923964, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_text
-      value: Screen shake
+      value: Screenshake
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923964, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_VerticalAlignment
@@ -786,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923965, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 222
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 2048037261337923965, guid: 6e216d8a362c8cb4fb4d3a4e25d5b024, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1018,6 +1034,22 @@ PrefabInstance:
     - target: {fileID: 7432818830018507947, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.9882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432818830197592433, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432818830197592438, guid: 34f68e286460bde478f474fecc1df1d3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1417,6 +1449,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4184024935727083683, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184024935727083683, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1704,7 +1740,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 3
   m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -1732,7 +1768,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 0}
+  m_SizeDelta: {x: 458.3197, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3572185678198474105
 GameObject:

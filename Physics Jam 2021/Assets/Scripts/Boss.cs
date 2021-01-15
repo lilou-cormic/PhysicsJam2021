@@ -76,12 +76,20 @@ public class Boss : MonoBehaviour
 
         Enemy enemy = collision.GetComponentInParent<Enemy>();
 
-        if (enemy != null && enemy.HasLeftBoss)
+        if (enemy != null)
+        {
+            if (enemy.HasLeftBoss)
+            {
+                if (collision.CompareTag(GameManager.SpikesTag))
+                    Health.ChangeHP(-1);
+
+                enemy.Kill();
+            }
+        }
+        else
         {
             if (collision.CompareTag(GameManager.SpikesTag))
                 Health.ChangeHP(-1);
-
-            enemy.Kill();
         }
 
         if (_isProcessing)

@@ -6,8 +6,28 @@ public class ShatterEnemy : Enemy
 
     public override EnemyType EnemyType => EnemyType.Shatter;
 
+    protected override bool AffectedByGravitySwitch => false;
+
+    protected bool IsExploding { get; set; } = false;
+
+    protected override void Update()
+    {
+        if (IsGrounded && rb.gravityScale == transform.localScale.y && !IsExploding)
+        {
+            SpriteRenderer.sprite = NormalImage;
+            MoveController.Move(transform, Direction, 1);
+        }
+        else
+        {
+            SpriteRenderer.sprite = FrownImage;
+        }
+
+    }
+
     protected override void OnTouchedGround()
     {
+        IsExploding = true;
+
         Explode();
     }
 
@@ -26,4 +46,6 @@ public class ShatterEnemy : Enemy
 
         Kill();
     }
+
+    
 }

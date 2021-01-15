@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 519792696875383564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8766215848508807914}
   m_RootOrder: 0
@@ -69,10 +69,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1666052591
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6949b135560d5fd4fa88e087111cb635, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 03be064c74d235247b15b5943cba2225, type: 3}
+  m_Color: {r: 0.75294125, g: 0.75294125, b: 0.75294125, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8766215848508807914}
   - component: {fileID: 725239692679177085}
   - component: {fileID: 3751981095685106063}
-  - component: {fileID: 8239874827623187266}
+  - component: {fileID: 1216462498773353205}
   m_Layer: 7
   m_Name: ShatterProjectile
   m_TagString: Untagged
@@ -150,8 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de4b32847778e642b9af2f5e60c41ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &8239874827623187266
-CircleCollider2D:
+  SpriteRenderer: {fileID: 5840262253989336997}
+--- !u!70 &1216462498773353205
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -164,8 +165,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
+  m_Size: {x: 0.95, y: 0.5}
+  m_Direction: 1
 --- !u!1001 &7475839129692866559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,12 +175,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 8766215848508807914}
     m_Modifications:
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6515623
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.41624987
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6949b135560d5fd4fa88e087111cb635, type: 3}
+      objectReference: {fileID: 21300000, guid: 03be064c74d235247b15b5943cba2225, type: 3}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingOrder
@@ -207,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687010775350518302, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7687010775350518302, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7687010775350518302, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_LocalPosition.x
