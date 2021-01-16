@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     [SerializeField] protected SpriteRenderer SpriteRenderer = null;
 
     [SerializeField] protected Sprite NormalImage = null;
+    [SerializeField] protected Sprite WalkImage = null;
     [SerializeField] protected Sprite FrownImage = null;
 
     [SerializeField] Color PopColor = Color.white;
@@ -47,25 +48,18 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        Metronome.Current.OnTick += Metronome_OnTick;
+    }
+
+    private void OnDestroy()
+    {
+        Metronome.Current.OnTick -= Metronome_OnTick;
     }
 
     private void OnEnable()
     {
         StartCoroutine(DoAppear());
-    }
-
-    protected virtual void Update()
-    {
-        if (IsGrounded && rb.gravityScale == transform.localScale.y)
-        {
-            SpriteRenderer.sprite = NormalImage;
-            MoveController.Move(transform, Direction, 1);
-        }
-        else
-        {
-            SpriteRenderer.sprite = FrownImage;
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,6 +128,14 @@ public abstract class Enemy : MonoBehaviour, IPoolable
         PopPool.ShowPop(PopColor, transform.position);
 
         ((IPoolable)(this)).SetAsAvailable();
+    }
+
+    protected virtual void Metronome_OnTick()
+    { }
+
+    public void SetSortingOrder(int sortingOrder)
+    {
+        SpriteRenderer.sortingOrder = sortingOrder;
     }
 
     bool IPoolable.IsInUse

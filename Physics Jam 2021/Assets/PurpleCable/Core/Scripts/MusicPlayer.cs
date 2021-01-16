@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PurpleCable
@@ -15,24 +16,28 @@ namespace PurpleCable
 
         public static float Volume
         {
-            get => Instance?.MenuMusicAudioSource?.volume ?? 0.2f;
+            get => PlayerPrefs.GetFloat("MusicVolume", 0.2f);
 
             set
             {
+                PlayerPrefs.SetFloat("MusicVolume", value);
+
                 if (Instance?.MenuMusicAudioSource != null)
                 {
                     Instance.MenuMusicAudioSource.volume = value;
                     Instance.GameMusicAudioSource.volume = value;
                 }
 
-                MusicTransition.SetVolume();
+                VolumeChanged?.Invoke();
             }
         }
 
+        public static event Action VolumeChanged;
+
         private void Start()
         {
-            MenuMusicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume", MenuMusicAudioSource.volume);
-            GameMusicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume", MenuMusicAudioSource.volume);
+            MenuMusicAudioSource.volume = Volume;
+            GameMusicAudioSource.volume = Volume;
 
             if (Instance != null)
             {
@@ -44,8 +49,6 @@ namespace PurpleCable
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            MusicTransition.SetVolume();
 
             Instance.PlayMusic();
         }

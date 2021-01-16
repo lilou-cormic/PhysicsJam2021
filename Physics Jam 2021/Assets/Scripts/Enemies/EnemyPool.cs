@@ -34,6 +34,7 @@ public sealed class EnemyPool : Pool<Enemy, EnemyType>
         var prefab = Prefabs.FirstOrDefault(x => x.EnemyType == category) ?? throw new NotImplementedException($"{category} not found in EnemyPool.Prefabs");
 
         Enemy enemy = Instantiate(prefab, transform);
+        enemy.SetSortingOrder(this.Count());
         ((IPoolable)enemy).SetAsAvailable();
 
         return enemy;

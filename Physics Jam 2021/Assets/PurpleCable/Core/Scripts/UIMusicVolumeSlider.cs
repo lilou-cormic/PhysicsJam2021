@@ -12,8 +12,6 @@ namespace PurpleCable
         protected override void OnValueChanged()
         {
             MusicPlayer.Volume = Value;
-
-            PlayerPrefs.SetFloat("MusicVolume", MusicPlayer.Volume);
         }
     }
 }

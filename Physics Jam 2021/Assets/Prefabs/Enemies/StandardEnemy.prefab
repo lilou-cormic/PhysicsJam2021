@@ -49,9 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 7409271519038583665}
-  PopColor: {r: 0.48235297, g: 0.7725491, b: 0.38823533, a: 1}
   NormalImage: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
+  WalkImage: {fileID: 21300000, guid: b230a7a9b2dcb1c42bc702b0184078c3, type: 3}
   FrownImage: {fileID: 21300000, guid: 1b605a90af1480942bc8645f035d45d1, type: 3}
+  PopColor: {r: 0.48235297, g: 0.7725491, b: 0.38823533, a: 1}
 --- !u!61 &7034090181676879193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7452287522518082026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1006976665788762519}
@@ -168,7 +169,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1248464479
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a8a3d6609de9cf44fba8035d8a48adc7, type: 3}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1159385432496884623, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_SortingOrder
@@ -291,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687010775350518302, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: -0.65000004
       objectReference: {fileID: 0}
     - target: {fileID: 7687010775350518302, guid: cb1ff49ab6d121840aa4000e9e44b15a, type: 3}
       propertyPath: m_LocalPosition.z

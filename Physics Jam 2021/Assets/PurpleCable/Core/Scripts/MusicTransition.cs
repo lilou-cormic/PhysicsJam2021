@@ -22,8 +22,10 @@ namespace PurpleCable
 
         private static bool _isTranstioning = false;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             TransitionSpeed = _TransitionSpeed;
 
             SetVolume();
@@ -40,6 +42,13 @@ namespace PurpleCable
                     music.Play();
                 }
             }
+
+            MusicPlayer.VolumeChanged += SetVolume;
+        }
+
+        private void OnDestroy()
+        {
+            MusicPlayer.VolumeChanged -= SetVolume;
         }
 
         private AudioSource CreateAudioSource(AudioClip audioClip)
@@ -53,9 +62,9 @@ namespace PurpleCable
             return audioSource;
         }
 
-        public static void SetVolume()
+        private static void SetVolume()
         {
-            _volume = (MusicPlayer.Instance?.gameObject.activeSelf != false ? MusicPlayer.Volume : 0);
+            _volume = MusicPlayer.Volume;
 
             if (_currentMusic != null)
                 _currentMusic.volume = _volume;

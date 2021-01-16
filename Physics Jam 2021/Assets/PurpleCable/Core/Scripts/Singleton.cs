@@ -14,7 +14,7 @@ namespace PurpleCable
         /// <summary>
         /// Singleton instance
         /// </summary>
-        public static TSingleton Instance { get; private set; }
+        public static TSingleton Instance { get; protected set; }
 
         #endregion
 

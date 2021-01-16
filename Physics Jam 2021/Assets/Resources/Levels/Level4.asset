@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level4
   m_EditorClassIdentifier: 
   BossHP: 5
-  EnemyTypes: 000000000100000002000000
+  EnemyTypes: 00000000000000000000000001000000010000000100000003000000
   GravityWave: 0

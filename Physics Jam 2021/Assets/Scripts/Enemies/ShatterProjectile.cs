@@ -25,7 +25,7 @@ public class ShatterProjectile : MonoBehaviour
 
     private void Update()
     {
-        MoveController.Move(transform, Direction, 5);
+        MoveController.Move(transform, Direction, 5.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

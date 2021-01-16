@@ -727,6 +727,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1957954139}
     m_Modifications:
+    - target: {fileID: 7245391214913887612, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7245391214913887613, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
       propertyPath: UserOrUrl
       value: https://purplecable.ca/
@@ -934,6 +938,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1602050835}
     m_Modifications:
+    - target: {fileID: 1194648851583326724, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
+      propertyPath: Label
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 4184024935688225819, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: m_text
       value: Menu
@@ -941,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 4184024935688225819, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 3604656576054470808, guid: 489916ede9d7b894894ccf8813a2f469, type: 2}
+      objectReference: {fileID: 6539652343713380181, guid: af24191d04c92da4d92b1e29c5ebae02, type: 2}
     - target: {fileID: 4184024935688225819, guid: ffb838e4bc2c69544b81a15603ad1398, type: 3}
       propertyPath: m_havePropertiesChanged
       value: 1
@@ -1101,7 +1109,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.20000002, g: 0.17254902, b: 0.3137255, a: 1}
+  m_BackGroundColor: {r: 0.07450981, g: 0.16470589, b: 0.18823531, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1985,6 +1993,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1494375955}
     m_Modifications:
+    - target: {fileID: 7245391214913887612, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7245391214913887613, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
       propertyPath: UserOrUrl
       value: http://mrjoshuamclean.com
@@ -1999,7 +2011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245391214913887614, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7245391214913887614, guid: d87ec8f6f58dab54ca316b411ebcefce, type: 3}
       propertyPath: m_AnchorMax.x

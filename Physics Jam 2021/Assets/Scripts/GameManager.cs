@@ -1,7 +1,6 @@
 ﻿using PurpleCable;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CameraShaker))]
 public class GameManager : MonoBehaviour
@@ -61,6 +60,11 @@ public class GameManager : MonoBehaviour
         ScoreManager.ResetScore();
     }
 
+    private void Start()
+    {
+        MusicManager.PlayMainMusic();
+    }
+
     private void OnDestroy()
     {
         Current = null;
@@ -92,6 +96,8 @@ public class GameManager : MonoBehaviour
         {
             _gameIsEnding = true;
 
+            MusicManager.PlayWinJingle();
+
             ScoreManager.AddPoints(LevelNumber);
             ScoreManager.SetHighScore();
 
@@ -114,6 +120,8 @@ public class GameManager : MonoBehaviour
         if (!_gameIsEnding)
         {
             _gameIsEnding = true;
+
+            MusicManager.PlayLoseJingle();
 
             ScoreManager.AddPoints(LevelNumber - 1);
             ScoreManager.SetHighScore();
