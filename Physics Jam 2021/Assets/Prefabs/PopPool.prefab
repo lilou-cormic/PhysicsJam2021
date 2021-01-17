@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BatchCount: 5
   Prefab: {fileID: 4371844855248495285, guid: e9a87c210bdf07246a359215750d1cea, type: 3}
+  PopSound: {fileID: 8300000, guid: 900fc76c6a5c90f40a91ea4451c693cc, type: 3}

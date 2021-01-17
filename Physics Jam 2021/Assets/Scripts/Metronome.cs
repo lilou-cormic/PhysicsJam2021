@@ -5,9 +5,9 @@ public class Metronome : MonoBehaviour
 {
     public static Metronome Current { get; private set; }
 
-    private const float bpm = 82;
+    public const float BPM = 82;
 
-    private const float tick = (bpm / 60) / 4;
+    private const float TickDelay = (BPM / 60) / 4f;
 
     public event Action OnTick;
 
@@ -15,7 +15,7 @@ public class Metronome : MonoBehaviour
     {
         Current = this;
 
-        InvokeRepeating(nameof(Tick), 0f, tick);
+        InvokeRepeating(nameof(Tick), 0f, TickDelay);
     }
 
     private void Tick()

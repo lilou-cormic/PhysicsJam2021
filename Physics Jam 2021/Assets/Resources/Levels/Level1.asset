@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfcc47b2c3938e249a785d3f0b59ccff, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  BossHP: 1
+  BossHP: 5
   EnemyTypes: 00000000
   GravityWave: 0

@@ -7,6 +7,8 @@ public class PopPool : Pool<Pop>
 
     [SerializeField] Pop Prefab = null;
 
+    [SerializeField] AudioClip PopSound = null;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,10 +24,13 @@ public class PopPool : Pool<Pop>
         return pop;
     }
 
-    public static void ShowPop(Color color, Vector3 position)
+    public static void ShowPop(Color color, Vector3 position, bool playSound = true)
     {
         var pop = _current.GetItem();
         pop.Color = color;
         pop.transform.position = position;
+
+        if (playSound)
+            _current.PopSound.PlayRandomPitch();
     }
 }

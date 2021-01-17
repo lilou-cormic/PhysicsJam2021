@@ -37,6 +37,8 @@ public class ShatterProjectile : MonoBehaviour
 
         collision.gameObject.GetComponent<Health>()?.ChangeHP(-1);
 
+        PopPool.ShowPop(SpriteRenderer.color, transform.position);
+
         Destroy(gameObject);
     }
 

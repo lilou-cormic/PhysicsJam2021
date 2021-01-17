@@ -36,7 +36,7 @@ public class HealthPickup : PoolableItem
     {
         collision.GetComponent<Health>().ChangeHP(1);
 
-        PopPool.ShowPop(PopColor, transform.position);
+        PopPool.ShowPop(PopColor, transform.position, playSound: false);
     }
 
     public void SetGravity(float gravity)

@@ -27,12 +27,7 @@ namespace PurpleCable
             MusicPlayer.VolumeChanged -= SetVolume;
         }
 
-        public void Play()
-        {
-            StartCoroutine(DoPlay());
-        }
-
-        private IEnumerator DoPlay()
+        private IEnumerator Start()
         {
             AudioSource.PlayOneShot(Intro);
 
@@ -48,6 +43,7 @@ namespace PurpleCable
 
         public void Stop()
         {
+            StopAllCoroutines();
             AudioSource.Stop();
         }
     }

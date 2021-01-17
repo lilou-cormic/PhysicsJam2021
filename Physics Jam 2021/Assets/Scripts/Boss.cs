@@ -4,11 +4,19 @@ using UnityEngine;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class Boss : MonoBehaviour
 {
+    private const float TickDelay = (Metronome.BPM / 60) * 1.5f;
+
     private Rigidbody2D rb = null;
 
     private Health Health = null;
+
+    private AudioSource AudioSource = null;
+
+    [SerializeField] AudioClip HitSound = null;
+    [SerializeField] AudioClip AttackSound = null;
 
     [SerializeField] Transform SpawnPoint = null;
 
@@ -39,9 +47,12 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
+        AudioSource.volume = SoundPlayer.Volume;
+
         Health.MaxHP = GameManager.CurrentLevel.BossHP;
 
-        InvokeRepeating(nameof(Attack), 2, 2);
+        InvokeRepeating(nameof(Attack), TickDelay, TickDelay);
 
         rb.velocity = Vector2.left * 3 * (Random.Range(0, 2) > 0 ? 1 : -1);
     }
@@ -114,6 +125,8 @@ public class Boss : MonoBehaviour
     {
         _hitCounter++;
 
+        AudioSource.PlayOneShot(HitSound);
+
         GameManager.ShakeCamera();
 
         yield return new WaitForSeconds(0.5f);
@@ -136,6 +149,8 @@ public class Boss : MonoBehaviour
             _isAngry = true;
 
             yield return new WaitForSeconds(0.5f);
+
+            AudioSource.PlayOneShot(AttackSound, 0.4f);
 
             _isAngry = false;
             _isAttacking = true;

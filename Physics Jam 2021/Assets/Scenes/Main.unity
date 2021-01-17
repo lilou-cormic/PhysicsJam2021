@@ -2575,17 +2575,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7146615509637866768, guid: 2875ea4c96a37774287d56598a7ee2b8, type: 3}
   m_PrefabInstance: {fileID: 6918464875784434980}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1962688410 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8339140301891989182, guid: 5d0e8c94f09524246af1b519ee9501c7, type: 3}
-  m_PrefabInstance: {fileID: 3687461851877524711}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba742841b4fe8844fb31ae8f02e1d70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2004619885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,10 +3240,6 @@ PrefabInstance:
       propertyPath: _Player
       value: 
       objectReference: {fileID: 966128451}
-    - target: {fileID: 6852292974960036270, guid: 5d0e8c94f09524246af1b519ee9501c7, type: 3}
-      propertyPath: MainMenu
-      value: 
-      objectReference: {fileID: 1962688410}
     - target: {fileID: 7759449580062923115, guid: 5d0e8c94f09524246af1b519ee9501c7, type: 3}
       propertyPath: m_Name
       value: GameManager

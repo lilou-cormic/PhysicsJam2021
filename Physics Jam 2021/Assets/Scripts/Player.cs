@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
 
     private Animator Animator = null;
 
+    [SerializeField] AudioSource HitAudioSource = null;
+
+    [SerializeField] AudioClip AttackSound = null;
+
     [SerializeField] SpriteRenderer SpriteRenderer = null;
 
     [SerializeField] Sprite NormalImage = null;
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour
         Animator.SetFloat("speed", Mathf.Abs(horizontal));
 
         if (Input.GetButtonDown("Fire1"))
-            StartCoroutine(DoSlash());
+            StartCoroutine(DoAttack());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -130,11 +134,14 @@ public class Player : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, rb.gravityScale, transform.localScale.z);
     }
 
-    private IEnumerator DoSlash()
+    private IEnumerator DoAttack()
     {
+
         Animator.SetTrigger("attack");
 
         _isAttacking = true;
+
+        AttackSound.PlayRandomPitch();
 
         yield return new WaitForSeconds(0.2f);
 
@@ -144,6 +151,9 @@ public class Player : MonoBehaviour
     private IEnumerator DoOnDamaged()
     {
         _isHit = true;
+
+        HitAudioSource.volume = SoundPlayer.Volume;
+        HitAudioSource.Play();
 
         GameManager.ShakeCamera();
 

@@ -566,6 +566,10 @@ PrefabInstance:
       propertyPath: Label
       value: Sounds
       objectReference: {fileID: 0}
+    - target: {fileID: 182402201959978548, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
+      propertyPath: TestSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 900fc76c6a5c90f40a91ea4451c693cc, type: 3}
     - target: {fileID: 7432818828557372586, guid: 124f85dc758824643aadcdd289d21a01, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

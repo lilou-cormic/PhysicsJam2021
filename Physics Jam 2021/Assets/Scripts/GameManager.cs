@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] MainMenu MainMenu = null;
 
+    [SerializeField] AudioClip GravitySwitchSound = null;
+
     private CameraShaker CameraShaker = null;
 
     private static GameManager Current { get; set; }
@@ -60,11 +62,6 @@ public class GameManager : MonoBehaviour
         ScoreManager.ResetScore();
     }
 
-    private void Start()
-    {
-        MusicManager.PlayMainMusic();
-    }
-
     private void OnDestroy()
     {
         Current = null;
@@ -72,6 +69,8 @@ public class GameManager : MonoBehaviour
 
     public static void SetGravity(float gravity)
     {
+        Current.GravitySwitchSound.Play();
+
         Current._Gravity = gravity;
 
         EnemyPool.SetGravity(gravity);
@@ -96,6 +95,7 @@ public class GameManager : MonoBehaviour
         {
             _gameIsEnding = true;
 
+            GetComponent<MusicWithIntro>().Stop();
             MusicManager.PlayWinJingle();
 
             ScoreManager.AddPoints(LevelNumber);
@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
         {
             _gameIsEnding = true;
 
+            GetComponent<MusicWithIntro>().Stop();
             MusicManager.PlayLoseJingle();
 
             ScoreManager.AddPoints(LevelNumber - 1);
