@@ -33,6 +33,7 @@ public class Boss : MonoBehaviour
     private bool IsHit => _hitCounter > 0;
     private bool _isAngry = false;
     private bool _isAttacking = false;
+    private int _attackCounter = 0;
     private bool _isDead = false;
 
     private void Awake()
@@ -155,8 +156,12 @@ public class Boss : MonoBehaviour
             _isAngry = false;
             _isAttacking = true;
 
-            if (GameManager.CurrentLevel.GravityWave && Random.Range(0, 100) < 10)
+            _attackCounter++;
+
+            if (GameManager.CurrentLevel.GravityWave && _attackCounter == 10)
             {
+                _attackCounter = 0;
+
                 GameManager.SetGravity(GameManager.Gravity * -1);
             }
             else

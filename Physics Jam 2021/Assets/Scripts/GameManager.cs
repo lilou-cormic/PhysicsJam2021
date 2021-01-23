@@ -1,6 +1,9 @@
 ﻿using PurpleCable;
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CameraShaker))]
 public class GameManager : MonoBehaviour
@@ -21,6 +24,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] MainMenu MainMenu = null;
 
     [SerializeField] AudioClip GravitySwitchSound = null;
+
+    [SerializeField] GameObject PausePanel = null;
+
+    private bool _IsPaused = false;
+    private bool IsPaused
+    {
+        get => _IsPaused;
+
+        set
+        {
+            _IsPaused = value;
+
+            Time.timeScale = (_IsPaused ? 0 : 1);
+
+            if (PausePanel != null)
+                PausePanel.gameObject.SetActive(_IsPaused);
+
+            if (_IsPaused)
+            {
+                EventSystem eventSystem = FindObjectOfType<EventSystem>();
+
+                //HACK
+                eventSystem.SetSelectedGameObject(gameObject);
+
+                eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject);
+            }
+        }
+    }
+
+    public static bool IsGamePaused => Current.IsPaused;
 
     private CameraShaker CameraShaker = null;
 
@@ -64,7 +97,15 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        UnPause();
+
         Current = null;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Pause") || Input.GetButtonDown("Cancel"))
+            IsPaused = !IsPaused;
     }
 
     public static void SetGravity(float gravity)
@@ -106,9 +147,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             if (CurrentLevel != null)
-                MainMenu.StartCoroutine(MainMenu.GoToScene("Win"));
+                MainMenu.LoadScene("Win");
             else
-                MainMenu.StartCoroutine(MainMenu.GoToScene("Congratulations"));
+                MainMenu.LoadScene("Congratulations");
         }
     }
 
@@ -127,11 +168,24 @@ public class GameManager : MonoBehaviour
             ScoreManager.AddPoints(LevelNumber - 1);
             ScoreManager.SetHighScore();
 
-            LevelNumber = 1;
+            if (Settings.Difficulty == Settings.DifficultyMode.Hard)
+                LevelNumber = 1;
 
             yield return new WaitForSeconds(2f);
 
-            MainMenu.StartCoroutine(MainMenu.GoToScene("GameOver"));
+            MainMenu.LoadScene("GameOver");
         }
+    }
+
+    public void UnPause()
+    {
+        IsPaused = false;
+    }
+
+    public void GoToMenu()
+    {
+        UnPause();
+
+        MainMenu.GoToMenu();
     }
 }

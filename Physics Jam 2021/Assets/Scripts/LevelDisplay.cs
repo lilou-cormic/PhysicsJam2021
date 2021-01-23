@@ -12,11 +12,18 @@ public class LevelDisplay : MonoBehaviour
 
     [SerializeField] protected Image[] LevelUnitDisplays = null;
 
-    [SerializeField] bool ShowScore = false;
+    [SerializeField] bool IsWin = false;
+    [SerializeField] bool IsGameOver = false;
 
     private void Start()
     {
-        int count = (ShowScore ? ScoreManager.Score : GameManager.CurrentLevelNumber);
+        int count;
+        if (IsWin)
+            count = ScoreManager.Score;
+        else if (IsGameOver)
+            count = ScoreManager.Score + 1;
+        else
+            count = GameManager.CurrentLevelNumber;
 
         for (int level = 1; level <= LevelUnitDisplays.Length; level++)
         {

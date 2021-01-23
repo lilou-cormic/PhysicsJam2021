@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 
     public bool HasFullHealth => Health.CurrentHP == Health.MaxHP;
 
+    public bool HasOneHPLeft => Health.CurrentHP == 1;
+
     private bool _isProcessing = false;
 
     private bool _isHit = false;
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (_isDead)
+        if (_isDead || GameManager.IsGamePaused)
             return;
 
         if (_isHit)

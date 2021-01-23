@@ -12,7 +12,7 @@ public class PlayerSlash : MonoBehaviour
 
             if (!GameManager.Player.HasFullHealth)
             {
-                if (Random.Range(0, 100) < 25)
+                if (Random.Range(0, 100) < (GameManager.Player.HasOneHPLeft ? 50 : 25))
                 {
                     var healthPickup = HealthPickupPool.Current.GetItem();
                     healthPickup.transform.position = enemy.transform.position;
